@@ -1,6 +1,17 @@
 html, body {
     margin: 0;
+    padding: 0;
     height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .bg_heart {
@@ -17,11 +28,11 @@ html, body {
 }
 
 .container {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    height: 100%;
-    width: 100%;
+    right: 0;
+    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,6 +41,7 @@ html, body {
     font-family: cursive, sans-serif;
     padding: 1rem;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .heart {
@@ -37,6 +49,7 @@ html, body {
     top: -50%;
     transform: rotate(-45deg);
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+    z-index: 1;
 }
 
 .heart:before,
@@ -73,22 +86,41 @@ html, body {
 #text1 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     line-height: 1.6;
-    max-width: 800px;
+    max-width: min(800px, 90vw);
     margin: 0 auto;
+    font-size: 16px;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     #text1 {
-        font-size: 1rem;
+        font-size: 14px;
         line-height: 1.4;
         padding: 0 1rem;
     }
+    
+    .heart {
+        transform: scale(0.8) rotate(-45deg);
+    }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     #text1 {
-        font-size: 0.8rem;
+        font-size: 12px;
         line-height: 1.3;
         padding: 0 0.5rem;
     }
+    
+    .heart {
+        transform: scale(0.6) rotate(-45deg);
+    }
+}
+
+/* Prevent text selection */
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
