@@ -1,71 +1,94 @@
-html,body{
-    margin:0px;
-    height:100%;
-  }
-  .bg_heart{
-    position:relative;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-   overflow:hidden;
-    background-image:url("handsflower.jpg");
-    background-size:100% 100%;
-    z-index:-1;
-  }
-  
-  .container{
-    position:absolute;
-    top:0;
-    left:0;
-    height:100%;
-    width:100%;
-    text-align:center;
-    color:white;
-    font-family:cursive;
-  }
-  
-  
-  .heart{
-    position:absolute;
-    top:-50%;
-    transform:rotate(-45deg);
-    -webkit-transform:rotate(-45deg);
-    -moz-transform:rotate(-45deg);
-    -m-transform:rotate(-45deg);
-  }
-  .heart:before{
-    position:absolute;
-    top:-50%;
-    left:0;
-    display:block;
-    content:"";
-    width:100%;
-    height:100%;
-    background:inherit;
-    border-radius:100%;
-  }
-  .heart:after{
-    position:absolute;
-    top:0;
-    right:-50%;
-    display:block;
-    content:"";
-    width:100%;
-    height:100%;
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+.bg_heart {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("handsflower.jpg");
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-family: cursive, sans-serif;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.heart {
+    position: absolute;
+    top: -50%;
+    transform: rotate(-45deg);
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+.heart:before,
+.heart:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
     background: inherit;
-    border-radius:100%;
-  }
-  
-  @keyframes love {
-    0%{top:110%}
-  }
-  @-webkit-keyframes love {
-    0%{top:110%}
-  }
-  @-moz-keyframes love {
-    0%{top:110%}
-  }
-  @-ms-keyframes love {
-    0%{top:110%}
-  }
+    border-radius: 50%;
+}
+
+.heart:before {
+    top: -50%;
+    left: 0;
+}
+
+.heart:after {
+    top: 0;
+    right: -50%;
+}
+
+@keyframes love {
+    0% { 
+        top: 110%;
+        opacity: 1;
+    }
+    100% { 
+        top: -50%;
+        opacity: 0.8;
+    }
+}
+
+#text1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    #text1 {
+        font-size: 1rem;
+        line-height: 1.4;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #text1 {
+        font-size: 0.8rem;
+        line-height: 1.3;
+        padding: 0 0.5rem;
+    }
+}
